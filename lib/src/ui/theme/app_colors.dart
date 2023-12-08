@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-abstract class AppColors {
+import 'app_colors_constants.dart';
+
+class AppColors {
   const AppColors._({
     required this.mainAccent,
     required this.minorAccent,
@@ -19,11 +21,25 @@ abstract class AppColors {
     required this.transparent,
   });
 
-  // factory AppColors.light() => AppColors._(
-  //     mainAccent: AppColorsConstants.red,
-  // );
-  //
-  // factory AppColors.dark() => AppColors._(...);
+  factory AppColors.light() => const AppColors._(
+        mainAccent: AppColorsConstants.blue,
+        minorAccent: AppColorsConstants.blue,
+        mainPrimary: AppColorsConstants.white,
+        minorPrimary: AppColorsConstants.white,
+        mainSecondary: AppColorsConstants.blue,
+        minorSecondary: AppColorsConstants.blue,
+        mainBackground: AppColorsConstants.gray,
+        minorBackground: AppColorsConstants.gray,
+        mainShadow: AppColorsConstants.black,
+        minorShadow: AppColorsConstants.black,
+        mainText: AppColorsConstants.black,
+        minorText: AppColorsConstants.gray,
+        success: AppColorsConstants.blue,
+        error: AppColorsConstants.blue,
+        transparent: AppColorsConstants.transparent,
+      );
+
+  factory AppColors.dark() => AppColors.light();
 
   final Color mainAccent;
   final Color minorAccent;

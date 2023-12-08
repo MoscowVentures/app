@@ -1,70 +1,66 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
+
+import 'src/di/providers.dart';
+import 'src/domain/navigation/app_routes_constants.dart';
+import 'src/ui/auth/confirm_screen.dart';
+import 'src/ui/auth/login_screen.dart';
+import 'src/ui/auth/register_screen.dart';
+import 'src/ui/common/error_screen.dart';
+import 'src/ui/theme/app_colors.dart';
+import 'src/ui/theme/app_theme.dart';
+import 'src/utils/extensions.dart';
 
 void main() {
   Logger.level = kDebugMode ? Level.all : Level.warning;
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-      );
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authController = ref.watch(authControllerProvider);
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
-    required this.title,
-    super.key,
-  });
+    return FutureBuilder(
+      future: authController.isAuthentificated(),
+      builder: (context, snapshot) {
+        final isAuthentificated = snapshot.data;
 
-  final String title;
+        if (isAuthentificated == null) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() => _counter++);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          theme: context.isDarkMode
+              ? AppTheme.dark(AppColors.dark()).themeData
+              : AppTheme.light(AppColors.light()).themeData,
+          initialRoute: isAuthentificated
+              ? AppRoutesConstants.main
+              : AppRoutesConstants.register,
+          routes: {
+            AppRoutesConstants.main: (context) =>
+                const Placeholder(color: Colors.blue),
+            AppRoutesConstants.register: (context) => const RegisterScreen(),
+            AppRoutesConstants.login: (context) => const LoginScreen(),
+            AppRoutesConstants.error: (context) => const ErrorScreen(),
+            AppRoutesConstants.confirm: (context) => const ConfirmScreen(),
+          },
+        );
+      },
+    );
   }
-
-  @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headline4,
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
-        ),
-      );
 }

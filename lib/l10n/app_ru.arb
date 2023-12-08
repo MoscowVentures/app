@@ -1,3 +1,18 @@
 {
-  "helloWorld": "Привет мир!"
+  "helloWorld": "Привет мир!",
+  "registerTitle": "Регистрация",
+  "loginTitle": "Вход",
+  "registerButtonTitle": "Зарегистрироваться",
+  "loginButtonTitle": "Войти",
+  "nameInputTitle": "Имя",
+  "phoneInputTitle": "Номер телефона",
+  "ageInputTitle": "Возраст",
+  "haveAccount": "Уже есть аккаунт?",
+  "errorTitle": "Упс, черная дыра в киберпространстве",
+  "retry": "Попробовать ещё раз",
+  "confirmSubtitle": "Ожидайте СМС с кодом для входа. Это может занять до 60 секунд.",
+  "confirmTitle": "Подтверждение",
+  "confirmButtonTitle": "Подтвердить",
+  "errorSubitle": "Наши инженеры с фонариками и комплектом первой помощи уже в пути! Скоро вы вернетесь к светлой стороне кодирования.",
+  "emptyInput": "Заполните поле"
 }

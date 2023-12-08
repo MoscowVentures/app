@@ -22,43 +22,59 @@ class AppTextTheme {
   }) =>
       AppTextTheme._(
         headline1: baseStyle.copyWith(
-          fontSize: 96,
+          fontSize: 50,
+          height: 72 / 60,
           color: colors.mainText,
+          fontWeight: FontWeight.bold,
         ),
         headline2: baseStyle.copyWith(
-          fontSize: 60,
+          fontSize: 38,
+          height: 57.6 / 48,
           color: colors.mainText,
+          fontWeight: FontWeight.bold,
         ),
         headline3: baseStyle.copyWith(
-          fontSize: 48,
+          fontSize: 30,
           color: colors.mainText,
+          fontWeight: FontWeight.w900,
         ),
         title1: baseStyle.copyWith(
-          fontSize: 34,
+          fontSize: 28,
+          height: 40.8 / 34,
           color: colors.mainText,
+          fontWeight: FontWeight.bold,
         ),
         title2: baseStyle.copyWith(
           fontSize: 24,
+          height: 28.8 / 24,
           color: colors.mainText,
+          fontWeight: FontWeight.bold,
         ),
         title3: baseStyle.copyWith(
           fontSize: 20,
+          height: 24 / 20,
           color: colors.mainText,
+          fontWeight: FontWeight.bold,
         ),
         body1: baseStyle.copyWith(
           fontSize: 16,
+          height: 20.8 / 16,
           color: colors.mainText,
         ),
         body2: baseStyle.copyWith(
           fontSize: 14,
-          color: colors.minorText,
+          height: 18.2 / 14,
+          color: colors.mainText,
+          fontWeight: FontWeight.w300,
         ),
         label1: baseStyle.copyWith(
           fontSize: 12,
+          height: 15.6 / 12,
           color: colors.mainText,
         ),
         label2: baseStyle.copyWith(
           fontSize: 10,
+          height: 13 / 10,
           color: colors.minorText,
         ),
       );
@@ -77,7 +93,7 @@ class AppTextTheme {
   final TextStyle? label1;
   final TextStyle? label2;
 
-  TextTheme get theme => TextTheme(
+  TextTheme get themeData => TextTheme(
         headlineLarge: headline1,
         headlineMedium: headline2,
         headlineSmall: headline3,
