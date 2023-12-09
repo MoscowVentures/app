@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../data/home/topic_response_data.dart';
+import '../../../data/polls/polls_args.dart';
+import '../../../utils/extensions.dart';
 import 'topic.dart';
 
 class TopicsList extends StatelessWidget {
@@ -24,6 +26,9 @@ class TopicsList extends StatelessWidget {
             title: topic.title,
             text: topic.text,
             backgroundUrl: topic.imageUrl,
+            onTap: () => context.toPollsScreen(
+              PollsArgs(topic.uuid),
+            ),
           );
         },
       );

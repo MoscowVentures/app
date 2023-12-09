@@ -9,7 +9,7 @@ class HomeApi {
   final Dio _dio;
 
   Future<HomeResponseData> load() async {
-    final response = await _dio.post(AppApiConstants.home);
+    final response = await _dio.get(AppApiConstants.home);
     return HomeResponseData.fromJson(response.data);
   }
 }

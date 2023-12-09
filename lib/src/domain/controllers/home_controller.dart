@@ -25,7 +25,6 @@ class HomeController extends StateNotifier<HomeState> {
   Future<void> loadData() async {
     try {
       setLoading(true);
-      await Future.delayed(const Duration(seconds: 10));
       final data = await _api.load();
       setData(data);
       setLoading(false);

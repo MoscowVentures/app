@@ -1,5 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import '../../utils/logger.dart';
 import '../app_keys.dart';
 
 class TokenController {
@@ -14,15 +15,24 @@ class TokenController {
     return isAuthentificated;
   }
 
-  void setToken(String token) {
+  Future<void> setToken(String token) async {
+    logger.d('Set token: $token');
     _token = token;
-    _secureStorage.write(
+    await _secureStorage.write(
       key: AppKeys.token,
       value: token,
     );
   }
 
-  String? get token => _token;
+  void clearToken() {
+    _token = null;
+    _secureStorage.delete(key: AppKeys.token);
+  }
+
+  String? get token {
+    logger.d('token: $_token');
+    return _token;
+  }
 
   bool get isAuthentificated => _token != null;
 }

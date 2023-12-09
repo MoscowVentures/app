@@ -12,8 +12,11 @@ import 'src/ui/auth/login_screen.dart';
 import 'src/ui/auth/register_screen.dart';
 import 'src/ui/common/error_screen.dart';
 import 'src/ui/home/home_screen.dart';
+import 'src/ui/polls/poll_screen.dart';
+import 'src/ui/text_chat/text_chat_screen.dart';
 import 'src/ui/theme/app_colors.dart';
 import 'src/ui/theme/app_theme.dart';
+import 'src/ui/voice_chat/voice_chat_screen.dart';
 import 'src/utils/extensions.dart';
 
 void main() {
@@ -68,6 +71,9 @@ class MyApp extends ConsumerWidget {
             AppRoutesConstants.login: (context) => const LoginScreen(),
             AppRoutesConstants.error: (context) => const ErrorScreen(),
             AppRoutesConstants.confirm: (context) => const ConfirmScreen(),
+            AppRoutesConstants.voiceChat: (context) => const VoiceChatScreen(),
+            AppRoutesConstants.polls: (context) => const PollsScreen(),
+            AppRoutesConstants.textChat: (context) => const TextChatScreen(),
           },
         );
       },

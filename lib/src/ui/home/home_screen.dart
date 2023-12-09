@@ -33,8 +33,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.light,
-        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
       ),
     );
 
@@ -52,74 +52,82 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return LoadingWrapper(
       isLoading: state.isLoading,
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: 54,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Text(
-                    context.strings.homeTitleMain,
-                    style: context.text.titleLarge,
+        body: RefreshIndicator(
+          color: context.colors.mainAccent,
+          backgroundColor: context.colors.mainPrimary,
+          onRefresh: controller.loadData,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 54),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Text(
+                      context.strings.homeTitleMain,
+                      style: context.text.titleLarge,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 30),
-                if (data != null)
-                  StoriesGallery(stories: data.stories)
-                else
-                  const StoriesGalleryShimmers(),
-                const SizedBox(height: 30),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Text(
-                    context.strings.homeTitleInteresting,
-                    style: context.text.titleSmall,
+                  const SizedBox(height: 30),
+                  if (data != null)
+                    StoriesGallery(stories: data.stories)
+                  else
+                    const StoriesGalleryShimmers(),
+                  const SizedBox(height: 30),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Text(
+                      context.strings.homeTitleInteresting,
+                      style: context.text.titleSmall,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Column(
-                    children: [
-                      Topic(
-                        title: context.strings.interestingChatbotTitle,
-                        text: context.strings.interestingChatbotSubtitle,
-                        assetPath: AppAssets.interesting4,
-                      ),
-                    ],
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Column(
+                      children: [
+                        Topic(
+                          title: context.strings.interestingVoiceBotTitle,
+                          text: context.strings.interestingVoiceBotSubtitle,
+                          assetPath: AppAssets.interesting4,
+                          onTap: context.toVoiceChatScreen,
+                        ),
+                        Topic(
+                          title: context.strings.interestingChatBotTitle,
+                          text: context.strings.interestingChatBotSubtitle,
+                          assetPath: AppAssets.interesting4,
+                          onTap: context.toTextChatScreen,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Text(
-                    context.strings.homeTitleTopics,
-                    style: context.text.titleSmall,
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Text(
+                      context.strings.homeTitleTopics,
+                      style: context.text.titleSmall,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: data != null
-                      ? TopicsList(
-                          topics: data.topics,
-                        )
-                      : Container(
-                          width: 385,
-                          height: 140,
-                          decoration: BoxDecoration(
-                            color: context.colors.mainPrimary,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(20),
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: data != null
+                        ? TopicsList(topics: data.topics)
+                        : Container(
+                            width: 385,
+                            height: 140,
+                            decoration: BoxDecoration(
+                              color: context.colors.mainPrimary,
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(20),
+                              ),
                             ),
                           ),
-                        ),
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

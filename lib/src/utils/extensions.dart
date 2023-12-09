@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../data/auth/confirm_args.dart';
 import '../data/auth/error_args.dart';
+import '../data/polls/polls_args.dart';
 import '../domain/navigation/app_routes_constants.dart';
 import '../ui/theme/app_colors.dart';
 
@@ -55,5 +56,18 @@ extension NavigationExtension on BuildContext {
   void toConfirmScreen(ConfirmArgs args) => Navigator.of(this).pushNamed(
         AppRoutesConstants.confirm,
         arguments: args,
+      );
+
+  void toVoiceChatScreen() => Navigator.of(this).pushNamed(
+        AppRoutesConstants.voiceChat,
+      );
+
+  void toPollsScreen(PollsArgs args) => Navigator.of(this).pushNamed(
+        AppRoutesConstants.polls,
+        arguments: args,
+      );
+
+  void toTextChatScreen() => Navigator.of(this).pushNamed(
+        AppRoutesConstants.textChat,
       );
 }

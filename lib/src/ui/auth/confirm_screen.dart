@@ -35,7 +35,7 @@ class _ConfirmScreenState extends ConsumerState<ConfirmScreen> {
         onLoading: () => setState(() => isLoading = true),
         onSuccess: (response) async {
           final data = ConfirmResponseData.fromJson(response.data);
-          tokenController.setToken(data.token);
+          await tokenController.setToken(data.token);
 
           setState(() => isLoading = false);
           context.toMainScreen();

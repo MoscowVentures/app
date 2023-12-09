@@ -7,36 +7,42 @@ class AppButton extends StatelessWidget {
     required this.title,
     required this.onTap,
     required this.isOutline,
+    required this.enabled,
     super.key,
   });
 
   factory AppButton.filled({
     required String title,
     required VoidCallback onTap,
+    bool enabled = true,
     Key? key,
   }) =>
       AppButton._(
         isOutline: false,
         title: title,
         onTap: onTap,
+        enabled: enabled,
         key: key,
       );
 
   factory AppButton.outline({
     required String title,
     required VoidCallback onTap,
+    bool enabled = true,
     Key? key,
   }) =>
       AppButton._(
         isOutline: true,
         title: title,
         onTap: onTap,
+        enabled: enabled,
         key: key,
       );
 
   final String title;
   final VoidCallback onTap;
   final bool isOutline;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) => SizedBox(
@@ -48,7 +54,9 @@ class AppButton extends StatelessWidget {
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
                 side: BorderSide(
-                  color: context.colors.mainAccent,
+                  color: enabled
+                      ? context.colors.mainAccent
+                      : context.colors.transparent,
                   width: 1.0,
                 ),
               ),
@@ -59,13 +67,15 @@ class AppButton extends StatelessWidget {
             backgroundColor: MaterialStateProperty.all<Color>(
               isOutline
                   ? context.colors.mainPrimary
-                  : context.colors.mainAccent,
+                  : enabled
+                      ? context.colors.mainAccent
+                      : context.colors.mainAccent.withOpacity(0.3),
             ),
             foregroundColor: MaterialStateProperty.all<Color>(
               context.colors.mainPrimary,
             ),
           ),
-          onPressed: onTap,
+          onPressed: enabled ? onTap : null,
           child: Text(
             title,
             style: context.text.titleSmall!.copyWith(

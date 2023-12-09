@@ -34,8 +34,8 @@ class AppColors {
         minorShadow: AppColorsConstants.black,
         mainText: AppColorsConstants.black,
         minorText: AppColorsConstants.gray,
-        success: AppColorsConstants.blue,
-        error: AppColorsConstants.blue,
+        success: AppColorsConstants.green,
+        error: AppColorsConstants.red,
         transparent: AppColorsConstants.transparent,
       );
 

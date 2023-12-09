@@ -16,8 +16,15 @@
   "homeTitleInteresting": "Интересное",
   "homeTitleTopics": "Темы",
   "homeTitleMain": "Главная",
-  "interestingChatbotTitle": "Чат-бот с виртуальным мошенником",
-  "interestingChatbotSubtitle": "Закрепите свои знания, пройдите тест из пройденных тем",
+  "voiceChatTitle": "Волк (не)мошенник",
+  "voiceChatSubtitle": "Номер +7 (777) 777-77-**",
+  "voiceChatScumButtonTitle": "Мошенник",
+  "voiceChatNotScumButtonTitle": "Не мошенник",
+  "save": "Сохранить",
+  "interestingChatBotTitle": "Чат-бот с виртуальным мошенником",
+  "interestingChatBotSubtitle": "Изучите различные ситуации в реальной жизни",
+  "interestingVoiceBotTitle": "Войс-бот с виртуальным мошенником",
+  "interestingVoiceBotSubtitle": "Закрепите свои знания",
   "errorSubitle": "Наши инженеры с фонариками и комплектом первой помощи уже в пути! Скоро вы вернетесь к светлой стороне кодирования.",
   "emptyInput": "Заполните поле"
 }
