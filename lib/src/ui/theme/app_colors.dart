@@ -25,7 +25,7 @@ class AppColors {
         mainAccent: AppColorsConstants.blue,
         minorAccent: AppColorsConstants.blue,
         mainPrimary: AppColorsConstants.white,
-        minorPrimary: AppColorsConstants.white,
+        minorPrimary: AppColorsConstants.darkGray,
         mainSecondary: AppColorsConstants.blue,
         minorSecondary: AppColorsConstants.blue,
         mainBackground: AppColorsConstants.gray,

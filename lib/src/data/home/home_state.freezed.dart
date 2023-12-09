@@ -21,6 +21,8 @@ HomeState _$HomeStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$HomeState {
   HomeResponseData? get data => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isError => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +35,7 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({HomeResponseData? data});
+  $Res call({HomeResponseData? data, bool isLoading, bool isError});
 
   $HomeResponseDataCopyWith<$Res>? get data;
 }
@@ -52,12 +54,22 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   $Res call({
     Object? data = freezed,
+    Object? isLoading = null,
+    Object? isError = null,
   }) {
     return _then(_value.copyWith(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as HomeResponseData?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: null == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -82,7 +94,7 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({HomeResponseData? data});
+  $Res call({HomeResponseData? data, bool isLoading, bool isError});
 
   @override
   $HomeResponseDataCopyWith<$Res>? get data;
@@ -100,12 +112,22 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
+    Object? isLoading = null,
+    Object? isError = null,
   }) {
     return _then(_$HomeStateImpl(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as HomeResponseData?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: null == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -113,17 +135,24 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$HomeStateImpl implements _HomeState {
-  const _$HomeStateImpl({required this.data});
+  const _$HomeStateImpl(
+      {this.data, this.isLoading = false, this.isError = false});
 
   factory _$HomeStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeStateImplFromJson(json);
 
   @override
   final HomeResponseData? data;
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isError;
 
   @override
   String toString() {
-    return 'HomeState(data: $data)';
+    return 'HomeState(data: $data, isLoading: $isLoading, isError: $isError)';
   }
 
   @override
@@ -131,12 +160,15 @@ class _$HomeStateImpl implements _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isError, isError) || other.isError == isError));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, data, isLoading, isError);
 
   @JsonKey(ignore: true)
   @override
@@ -153,14 +185,20 @@ class _$HomeStateImpl implements _HomeState {
 }
 
 abstract class _HomeState implements HomeState {
-  const factory _HomeState({required final HomeResponseData? data}) =
-      _$HomeStateImpl;
+  const factory _HomeState(
+      {final HomeResponseData? data,
+      final bool isLoading,
+      final bool isError}) = _$HomeStateImpl;
 
   factory _HomeState.fromJson(Map<String, dynamic> json) =
       _$HomeStateImpl.fromJson;
 
   @override
   HomeResponseData? get data;
+  @override
+  bool get isLoading;
+  @override
+  bool get isError;
   @override
   @JsonKey(ignore: true)
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>

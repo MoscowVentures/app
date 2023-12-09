@@ -34,6 +34,7 @@ class AppTheme {
         bottomSheetTheme: BottomSheetThemeData(
           backgroundColor: appColors.mainPrimary,
         ),
+        scaffoldBackgroundColor: appColors.mainBackground,
         textTheme: AppTextTheme.from(
           colors: appColors,
           baseStyle: GoogleFonts.mulish(),

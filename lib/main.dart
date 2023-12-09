@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
@@ -10,6 +11,7 @@ import 'src/ui/auth/confirm_screen.dart';
 import 'src/ui/auth/login_screen.dart';
 import 'src/ui/auth/register_screen.dart';
 import 'src/ui/common/error_screen.dart';
+import 'src/ui/home/home_screen.dart';
 import 'src/ui/theme/app_colors.dart';
 import 'src/ui/theme/app_theme.dart';
 import 'src/utils/extensions.dart';
@@ -28,10 +30,19 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authController = ref.watch(authControllerProvider);
+    final tokenController = ref.watch(tokenControllerProvider);
+
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: context.colors.mainBackground,
+        statusBarColor: context.colors.mainBackground,
+      ),
+    );
 
     return FutureBuilder(
-      future: authController.isAuthentificated(),
+      future: tokenController.init(),
       builder: (context, snapshot) {
         final isAuthentificated = snapshot.data;
 
@@ -52,8 +63,7 @@ class MyApp extends ConsumerWidget {
               ? AppRoutesConstants.main
               : AppRoutesConstants.register,
           routes: {
-            AppRoutesConstants.main: (context) =>
-                const Placeholder(color: Colors.blue),
+            AppRoutesConstants.main: (context) => const HomeScreen(),
             AppRoutesConstants.register: (context) => const RegisterScreen(),
             AppRoutesConstants.login: (context) => const LoginScreen(),
             AppRoutesConstants.error: (context) => const ErrorScreen(),

@@ -50,38 +50,36 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     final authController = ref.watch(authControllerProvider);
 
-    return Stack(
-      children: [
-        Scaffold(
-          backgroundColor: context.colors.mainBackground,
-          body: const CircleGradientBackground(),
-          resizeToAvoidBottomInset: true,
-          bottomSheet: SingleChildScrollView(
-            child: BottomSheet(
-              enableDrag: false,
-              onClosing: () {},
-              clipBehavior: Clip.hardEdge,
-              constraints: BoxConstraints(
-                maxHeight: MediaQuery.of(context).size.height * 2 / 3,
+    return LoadingWrapper(
+      isLoading: isLoading,
+      child: Scaffold(
+        backgroundColor: context.colors.mainBackground,
+        body: const CircleGradientBackground(),
+        resizeToAvoidBottomInset: true,
+        bottomSheet: SingleChildScrollView(
+          child: BottomSheet(
+            enableDrag: false,
+            onClosing: () {},
+            clipBehavior: Clip.hardEdge,
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height * 2 / 3,
+            ),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(20),
               ),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(20),
-                ),
-              ),
-              builder: (context) => LoginScreenContent(
-                onRegisterPressed: context.toRegisterScreen,
-                onLoginPressed: (phone) => _login(
-                  authController,
-                  phone,
-                  false,
-                ),
+            ),
+            builder: (context) => LoginScreenContent(
+              onRegisterPressed: context.toRegisterScreen,
+              onLoginPressed: (phone) => _login(
+                authController,
+                phone,
+                false,
               ),
             ),
           ),
         ),
-        if (isLoading) const LoadingScreen(),
-      ],
+      ),
     );
   }
 }

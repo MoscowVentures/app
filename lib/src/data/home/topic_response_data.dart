@@ -6,8 +6,10 @@ part 'topic_response_data.g.dart';
 @freezed
 class TopicResponseData with _$TopicResponseData {
   const factory TopicResponseData({
-    @JsonKey(name: 'title') required String topics,
     @JsonKey(name: 'uuid') required String uuid,
+    @JsonKey(name: 'title') required String title,
+    @JsonKey(name: 'text') required String text,
+    @JsonKey(name: 'image_url') required String imageUrl,
   }) = _TopicResponseData;
 
   factory TopicResponseData.fromJson(Map<String, dynamic> json) =>

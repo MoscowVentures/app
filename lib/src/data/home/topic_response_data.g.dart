@@ -9,13 +9,17 @@ part of 'topic_response_data.dart';
 _$TopicResponseDataImpl _$$TopicResponseDataImplFromJson(
         Map<String, dynamic> json) =>
     _$TopicResponseDataImpl(
-      topics: json['title'] as String,
       uuid: json['uuid'] as String,
+      title: json['title'] as String,
+      text: json['text'] as String,
+      imageUrl: json['image_url'] as String,
     );
 
 Map<String, dynamic> _$$TopicResponseDataImplToJson(
         _$TopicResponseDataImpl instance) =>
     <String, dynamic>{
-      'title': instance.topics,
       'uuid': instance.uuid,
+      'title': instance.title,
+      'text': instance.text,
+      'image_url': instance.imageUrl,
     };

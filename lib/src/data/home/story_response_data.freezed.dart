@@ -20,10 +20,14 @@ StoryResponseData _$StoryResponseDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StoryResponseData {
-  @JsonKey(name: 'url')
-  String get url => throw _privateConstructorUsedError;
+  @JsonKey(name: 'title')
+  String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'text')
   String get text => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_url')
+  String get url => throw _privateConstructorUsedError;
+  @JsonKey(name: 'align')
+  HomeAlign get align => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +42,10 @@ abstract class $StoryResponseDataCopyWith<$Res> {
       _$StoryResponseDataCopyWithImpl<$Res, StoryResponseData>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'url') String url, @JsonKey(name: 'text') String text});
+      {@JsonKey(name: 'title') String title,
+      @JsonKey(name: 'text') String text,
+      @JsonKey(name: 'image_url') String url,
+      @JsonKey(name: 'align') HomeAlign align});
 }
 
 /// @nodoc
@@ -54,18 +61,28 @@ class _$StoryResponseDataCopyWithImpl<$Res, $Val extends StoryResponseData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = null,
+    Object? title = null,
     Object? text = null,
+    Object? url = null,
+    Object? align = null,
   }) {
     return _then(_value.copyWith(
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+      align: null == align
+          ? _value.align
+          : align // ignore: cast_nullable_to_non_nullable
+              as HomeAlign,
     ) as $Val);
   }
 }
@@ -79,7 +96,10 @@ abstract class _$$StoryResponseDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'url') String url, @JsonKey(name: 'text') String text});
+      {@JsonKey(name: 'title') String title,
+      @JsonKey(name: 'text') String text,
+      @JsonKey(name: 'image_url') String url,
+      @JsonKey(name: 'align') HomeAlign align});
 }
 
 /// @nodoc
@@ -93,18 +113,28 @@ class __$$StoryResponseDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = null,
+    Object? title = null,
     Object? text = null,
+    Object? url = null,
+    Object? align = null,
   }) {
     return _then(_$StoryResponseDataImpl(
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+      align: null == align
+          ? _value.align
+          : align // ignore: cast_nullable_to_non_nullable
+              as HomeAlign,
     ));
   }
 }
@@ -113,22 +143,30 @@ class __$$StoryResponseDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$StoryResponseDataImpl implements _StoryResponseData {
   const _$StoryResponseDataImpl(
-      {@JsonKey(name: 'url') required this.url,
-      @JsonKey(name: 'text') required this.text});
+      {@JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'text') required this.text,
+      @JsonKey(name: 'image_url') required this.url,
+      @JsonKey(name: 'align') required this.align});
 
   factory _$StoryResponseDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$StoryResponseDataImplFromJson(json);
 
   @override
-  @JsonKey(name: 'url')
-  final String url;
+  @JsonKey(name: 'title')
+  final String title;
   @override
   @JsonKey(name: 'text')
   final String text;
+  @override
+  @JsonKey(name: 'image_url')
+  final String url;
+  @override
+  @JsonKey(name: 'align')
+  final HomeAlign align;
 
   @override
   String toString() {
-    return 'StoryResponseData(url: $url, text: $text)';
+    return 'StoryResponseData(title: $title, text: $text, url: $url, align: $align)';
   }
 
   @override
@@ -136,13 +174,15 @@ class _$StoryResponseDataImpl implements _StoryResponseData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StoryResponseDataImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.text, text) || other.text == text) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.text, text) || other.text == text));
+            (identical(other.align, align) || other.align == align));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, url, text);
+  int get hashCode => Object.hash(runtimeType, title, text, url, align);
 
   @JsonKey(ignore: true)
   @override
@@ -161,19 +201,27 @@ class _$StoryResponseDataImpl implements _StoryResponseData {
 
 abstract class _StoryResponseData implements StoryResponseData {
   const factory _StoryResponseData(
-          {@JsonKey(name: 'url') required final String url,
-          @JsonKey(name: 'text') required final String text}) =
+          {@JsonKey(name: 'title') required final String title,
+          @JsonKey(name: 'text') required final String text,
+          @JsonKey(name: 'image_url') required final String url,
+          @JsonKey(name: 'align') required final HomeAlign align}) =
       _$StoryResponseDataImpl;
 
   factory _StoryResponseData.fromJson(Map<String, dynamic> json) =
       _$StoryResponseDataImpl.fromJson;
 
   @override
-  @JsonKey(name: 'url')
-  String get url;
+  @JsonKey(name: 'title')
+  String get title;
   @override
   @JsonKey(name: 'text')
   String get text;
+  @override
+  @JsonKey(name: 'image_url')
+  String get url;
+  @override
+  @JsonKey(name: 'align')
+  HomeAlign get align;
   @override
   @JsonKey(ignore: true)
   _$$StoryResponseDataImplCopyWith<_$StoryResponseDataImpl> get copyWith =>

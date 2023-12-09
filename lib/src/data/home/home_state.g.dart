@@ -11,9 +11,13 @@ _$HomeStateImpl _$$HomeStateImplFromJson(Map<String, dynamic> json) =>
       data: json['data'] == null
           ? null
           : HomeResponseData.fromJson(json['data'] as Map<String, dynamic>),
+      isLoading: json['isLoading'] as bool? ?? false,
+      isError: json['isError'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$HomeStateImplToJson(_$HomeStateImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
+      'isLoading': instance.isLoading,
+      'isError': instance.isError,
     };

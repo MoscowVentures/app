@@ -20,10 +20,14 @@ TopicResponseData _$TopicResponseDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TopicResponseData {
-  @JsonKey(name: 'title')
-  String get topics => throw _privateConstructorUsedError;
   @JsonKey(name: 'uuid')
   String get uuid => throw _privateConstructorUsedError;
+  @JsonKey(name: 'title')
+  String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'text')
+  String get text => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_url')
+  String get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,8 +42,10 @@ abstract class $TopicResponseDataCopyWith<$Res> {
       _$TopicResponseDataCopyWithImpl<$Res, TopicResponseData>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'title') String topics,
-      @JsonKey(name: 'uuid') String uuid});
+      {@JsonKey(name: 'uuid') String uuid,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'text') String text,
+      @JsonKey(name: 'image_url') String imageUrl});
 }
 
 /// @nodoc
@@ -55,17 +61,27 @@ class _$TopicResponseDataCopyWithImpl<$Res, $Val extends TopicResponseData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? topics = null,
     Object? uuid = null,
+    Object? title = null,
+    Object? text = null,
+    Object? imageUrl = null,
   }) {
     return _then(_value.copyWith(
-      topics: null == topics
-          ? _value.topics
-          : topics // ignore: cast_nullable_to_non_nullable
-              as String,
       uuid: null == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -80,8 +96,10 @@ abstract class _$$TopicResponseDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'title') String topics,
-      @JsonKey(name: 'uuid') String uuid});
+      {@JsonKey(name: 'uuid') String uuid,
+      @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'text') String text,
+      @JsonKey(name: 'image_url') String imageUrl});
 }
 
 /// @nodoc
@@ -95,17 +113,27 @@ class __$$TopicResponseDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? topics = null,
     Object? uuid = null,
+    Object? title = null,
+    Object? text = null,
+    Object? imageUrl = null,
   }) {
     return _then(_$TopicResponseDataImpl(
-      topics: null == topics
-          ? _value.topics
-          : topics // ignore: cast_nullable_to_non_nullable
-              as String,
       uuid: null == uuid
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -115,22 +143,30 @@ class __$$TopicResponseDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TopicResponseDataImpl implements _TopicResponseData {
   const _$TopicResponseDataImpl(
-      {@JsonKey(name: 'title') required this.topics,
-      @JsonKey(name: 'uuid') required this.uuid});
+      {@JsonKey(name: 'uuid') required this.uuid,
+      @JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'text') required this.text,
+      @JsonKey(name: 'image_url') required this.imageUrl});
 
   factory _$TopicResponseDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$TopicResponseDataImplFromJson(json);
 
   @override
-  @JsonKey(name: 'title')
-  final String topics;
-  @override
   @JsonKey(name: 'uuid')
   final String uuid;
+  @override
+  @JsonKey(name: 'title')
+  final String title;
+  @override
+  @JsonKey(name: 'text')
+  final String text;
+  @override
+  @JsonKey(name: 'image_url')
+  final String imageUrl;
 
   @override
   String toString() {
-    return 'TopicResponseData(topics: $topics, uuid: $uuid)';
+    return 'TopicResponseData(uuid: $uuid, title: $title, text: $text, imageUrl: $imageUrl)';
   }
 
   @override
@@ -138,13 +174,16 @@ class _$TopicResponseDataImpl implements _TopicResponseData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TopicResponseDataImpl &&
-            (identical(other.topics, topics) || other.topics == topics) &&
-            (identical(other.uuid, uuid) || other.uuid == uuid));
+            (identical(other.uuid, uuid) || other.uuid == uuid) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, topics, uuid);
+  int get hashCode => Object.hash(runtimeType, uuid, title, text, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -163,19 +202,27 @@ class _$TopicResponseDataImpl implements _TopicResponseData {
 
 abstract class _TopicResponseData implements TopicResponseData {
   const factory _TopicResponseData(
-          {@JsonKey(name: 'title') required final String topics,
-          @JsonKey(name: 'uuid') required final String uuid}) =
+          {@JsonKey(name: 'uuid') required final String uuid,
+          @JsonKey(name: 'title') required final String title,
+          @JsonKey(name: 'text') required final String text,
+          @JsonKey(name: 'image_url') required final String imageUrl}) =
       _$TopicResponseDataImpl;
 
   factory _TopicResponseData.fromJson(Map<String, dynamic> json) =
       _$TopicResponseDataImpl.fromJson;
 
   @override
-  @JsonKey(name: 'title')
-  String get topics;
-  @override
   @JsonKey(name: 'uuid')
   String get uuid;
+  @override
+  @JsonKey(name: 'title')
+  String get title;
+  @override
+  @JsonKey(name: 'text')
+  String get text;
+  @override
+  @JsonKey(name: 'image_url')
+  String get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$$TopicResponseDataImplCopyWith<_$TopicResponseDataImpl> get copyWith =>

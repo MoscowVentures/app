@@ -13,6 +13,11 @@
   "confirmSubtitle": "Ожидайте СМС с кодом для входа. Это может занять до 60 секунд.",
   "confirmTitle": "Подтверждение",
   "confirmButtonTitle": "Подтвердить",
+  "homeTitleInteresting": "Интересное",
+  "homeTitleTopics": "Темы",
+  "homeTitleMain": "Главная",
+  "interestingChatbotTitle": "Чат-бот с виртуальным мошенником",
+  "interestingChatbotSubtitle": "Закрепите свои знания, пройдите тест из пройденных тем",
   "errorSubitle": "Наши инженеры с фонариками и комплектом первой помощи уже в пути! Скоро вы вернетесь к светлой стороне кодирования.",
   "emptyInput": "Заполните поле"
 }

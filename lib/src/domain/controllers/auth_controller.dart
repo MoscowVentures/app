@@ -1,30 +1,17 @@
 import 'dart:ui';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../api/auth_api.dart';
 import '../../data/auth/confirm_request_data.dart';
 import '../../data/auth/login_request_data.dart';
 import '../../data/auth/register_request_data.dart';
 import '../../utils/logger.dart';
-import '../app_keys.dart';
 
 class AuthController {
-  AuthController(this._secureStorage, this._api);
+  AuthController(this._api);
 
-  final FlutterSecureStorage _secureStorage;
   final AuthApi _api;
-
-  Future<bool> isAuthentificated() async {
-    final token = await _secureStorage.read(key: AppKeys.token);
-    return token != null;
-  }
-
-  Future<void> setToken(String token) => _secureStorage.write(
-        key: AppKeys.token,
-        value: token,
-      );
 
   Future<void> _request<T>({
     required T data,
